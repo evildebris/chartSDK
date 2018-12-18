@@ -1,0 +1,1369 @@
+﻿/**
+ *  editor:cai.liao
+ *  date:2018.1.11
+ * */
+html,body{
+    width: 100%;
+    height:100%;
+    overflow: hidden;
+}
+body{
+    background: url("../images/background_min.jpg") no-repeat 100%;
+}
+#parentDom{
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-y: auto;
+    background: rgba(0,0,0,.2);
+    position: absolute;
+    top: 50px;
+    left: 0;
+}
+#title_name{
+    width: 118px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 5px 26px;
+    cursor: default;
+    background: url(../images/button_bgc.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+}
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track-piece
+{
+    background-color: rgba(11,131,243,0.1);
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #1c91f2;
+    -webkit-border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #1c91f2;
+    -webkit-border-radius: 6px;
+}
+@media screen and (min-height: 770px) {
+    .chart_container_menu {
+        top: 35px
+    }
+    .panel_navigation {
+        height: 35px;
+        line-height: 35px;
+    }
+}
+
+@media screen and (max-height: 770px) {
+    .chart_container_menu {
+        top: 30px
+    }
+    .panel_navigation {
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.echart_background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.chart_navigation {
+    float: left;
+    width: 100%;
+    /*height: 35px;*/
+    border: 1px solid #5C8BB4;
+    background: url('../../../resource/asset/win_top_bg.png');
+}
+
+.chart_closewindow {
+    width: 11px;
+    height: 11px;
+    float: right;
+    cursor: pointer;
+    margin-top: -13px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background: url("../../../resource/asset/closewindow.png");
+}
+
+
+.chart_customparam {
+    position: absolute;
+    top: 12px;
+    width: 64%;
+    left: 34%;
+    bottom: 77px;
+    border-radius: 3px;
+    border: 1px solid #B2C8E8;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.chart_container_menu {
+    margin-bottom: 0px;
+    width: 100%;
+    bottom: 0;
+    /*top: 0px;*/
+    /*top: 35px;*/
+    overflow-y: auto;
+    font-family: "微软雅黑";
+    cursor: default;
+    position: absolute;
+    background: transparent;
+    overflow-x: hidden;
+}
+
+.chart_container {
+    margin-bottom: 0px;
+    width: 100%;
+    bottom: 0;
+    top: 0px;
+    /*top: 35px;*/
+    overflow-y: auto;
+    font-family: "微软雅黑";
+    cursor: default;
+    position: absolute;
+    background: white;
+    overflow-x: hidden;
+}
+
+.sheet_sourcebtn {
+    float: right;
+    line-height: 23px;
+    width: 125px;
+    margin-top: 5px;
+    height: 25px;
+    margin-right: 6px;
+    border: 1px solid #0C5290;
+    cursor: default;
+}
+
+.sheet_body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sheet_header {
+    background: #28699A;
+}
+
+.sheet_table {
+    border-right: 1px solid #5C8BB4;
+}
+
+.sheet_table th {
+    border-left: 1px solid #5C8BB4;
+    border-collapse: collapse;
+    text-overflow: ellipsis;
+    padding: 4px;
+    text-align: center;
+    position: relative;
+    /*text-align: left !important;*/
+}
+
+.sheet_table thead {
+    min-height: 25px;
+}
+
+.sheet_table tbody {
+    min-height: 25px;
+}
+
+.sheet_label {
+    text-align: center;
+    line-height: 25px;
+}
+
+.sheet_pre {
+    outline: none;
+    border: none;
+    background: white;
+}
+
+.sheet_table td {
+    border-left: 1px solid #5C8BB4;
+    border-collapse: collapse;
+    text-overflow: ellipsis;
+    padding: 4px;
+    text-align: center;
+    /*text-align: left !important;*/
+}
+
+.sheet_span {
+    /*margin-left: 40px;*/
+    margin-left: 30px;
+    margin-right: 20px;
+    /*float: left;*/
+}
+
+.sheet_span2 {
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.sheet_input {
+    float: left;
+    margin-left: 8px !important;
+    margin-top: 9px;
+    width: 15px;
+    height: 15px;
+}
+
+.sheet_input2 {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    /*float: right;*/
+    right: 5px;
+    margin-left: 8px !important;
+    margin-top: 9px;
+}
+
+.sheet_name {
+    min-width: 50px;
+}
+
+.sheet_list {
+    float: left;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    margin-right: 0;
+}
+.chart_box{
+    position: relative;
+    width: 28%;
+    float: left;
+    border: 1px solid #5C8BB4;
+    overflow: hidden;
+    margin: 2% 2% 0 2%;
+    padding-bottom: 20%;
+    border-radius: 12px;
+    box-shadow: 3px 2px 7px rgba(255,255,255,0.2), -2px -2px 20px rgba(255,255,255,.3) inset, 2px 2px 20px rgba(255,255,255,0.3) inset;
+    background: rgba(255,255,255,0.3);
+}
+
+.chart_body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.echart_border {
+    position: absolute;
+    /*border-top: 1px solid #5C8BB4;*/
+    top: 35px;
+    width: 100%;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.echart_maincontent {
+    width: 100%;
+    /*height: 100%;*/
+    height: 35px;
+    overflow: hidden;
+    clear: both;
+}
+
+
+/*panel*/
+
+.panel_container {
+    position: absolute;
+    width: 75%;
+    height: 80%;
+    left: 190px;
+    top: 150px;
+    border: 1px solid gray;
+    font-family: '微软雅黑';
+    font-size: 14px;
+    border-radius: 3px;
+    overflow: hidden;
+    font-weight: 100 !important;
+    /*color: white !important;*/
+}
+
+.panel_navigation {
+    position: relative;
+    width: 100%;
+    /*height: 35px;*/
+    border-bottom: 1px solid gray;
+    /*line-height: 35px;*/
+    cursor: move;
+    background: url('../../../resource/botton/botton.png');
+    background-size: 100% 100%;
+}
+
+.panel_navigation:hover {
+    background: url('../../../resource/botton/botton_hover.png');
+    background-size: 100% 100%;
+}
+
+.containerAnimate0 {
+    transition: 0.5s cubic-bezier(1, -1, 0, 2);
+    -webkit-clip-path: circle(180px at 180px 180px);
+    clip-path: circle(180px at 180px 180px);
+}
+
+.containerAnimate1 {
+    -webkit-clip-path: circle(95px at 128px 95px);
+    clip-path: circle(95px at 128px 95px);
+}
+
+.panel_navigation span {
+    margin-left: 6px;
+    color: white;
+    float: left;
+    max-width: 60px;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.panel_function {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 90px;
+    height: 100%;
+    float: right;
+    cursor: pointer;
+    color: white;
+}
+
+.panel_function li {
+    width: 30px;
+    height: 29px;
+    text-align: center;
+}
+
+.panel_transclude {
+    height: 100%;
+}
+
+.panel_corner {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: grey;
+    transform: rotate(45deg);
+    cursor: nwse-resize;
+    display: block;
+    z-index: 1;
+}
+
+.panel_bottom {
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    bottom: 0;
+    border-top: 1px solid gray;
+    background-color: blue;
+    opacity: 0.5;
+    display: none;
+}
+
+.panel_left {
+    position: absolute;
+    width: 10px;
+    z-index: 1;
+    top: 10px;
+    bottom: 10px;
+    cursor: e-resize;
+}
+
+.panel_right {
+    position: absolute;
+    z-index: 1;
+    width: 10px;
+    top: 10px;
+    bottom: 10px;
+    right: 0;
+    cursor: e-resize;
+}
+
+.panel_top {
+    position: absolute;
+    z-index: 1;
+    height: 10px;
+    left: 10px;
+    right: 10px;
+    top: 0;
+    cursor: s-resize;
+}
+
+.panel_bottom {
+    position: absolute;
+    z-index: 1;
+    height: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 0;
+    cursor: s-resize;
+}
+
+.panel_minmove {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 25px;
+    height: 25px;
+    right: 0;
+    z-index: 1;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.panel_minmove span {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.panel_movebottom {
+    position: absolute;
+    bottom: 0;
+    height: 20px;
+    width: 100%;
+    opacity: 0;
+}
+
+.echart_minmove {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+}
+
+.paramtem_group {
+    margin: 5px;
+    border: 1px solid #B2C8E8;
+    border-radius: 5px;
+}
+
+.paramtem_title {
+    padding-left: 2%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.panel_export {
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    bottom: 0;
+    right: 17px;
+    line-height: 20px;
+    color: black;
+    text-align: center;
+    cursor: default;
+}
+
+.panel_backcolor {
+    background: #28699A;
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.ds_ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ds_ul li {
+    height: 30px;
+    line-height: 30px;
+    text-indent: 8px;
+    border-bottom: 1px solid #B2C8E8;
+    /*color: gray;*/
+}
+
+.chart_status {
+    height: 60px;
+    left: 2%;
+    right: 2%;
+    /*left: 4px;*/
+    /*right: 4px;*/
+    /* top: 4px; */
+    /* padding: 9px; */
+    position: absolute;
+    border: 1px solid #B2C8E8;
+    bottom: 6px;
+}
+
+.ds_iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #B2C8E8;
+}
+
+.ds_title {
+    position: absolute;
+    height: 25px;
+    top: 0;
+    line-height: 25px;
+    color: gray;
+}
+
+.ds_textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #B2C8E8;
+}
+
+.ds_content {
+    position: absolute;
+    top: 25px;
+    left: 1%;
+    right: 1%;
+    bottom: 4px;
+}
+
+.sheet_toolcon {
+    position: absolute;
+    bottom: 2px;
+    height: 30px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    /*background: red;*/
+    /*opacity: 0.5;*/
+}
+
+.sheet_screen {
+    float: left;
+    width: 50%;
+}
+
+.sheet_input3 input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.sheet_input3 input:focus {
+    outline: none;
+    border: none;
+}
+
+.sheet_toolcon .sheet_btn {
+    float: left;
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid grey;
+    line-height: 30px;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 10px;
+    /*background: url("../../../resource/botton");*/
+}
+
+.sheet_input3 {
+    float: left;
+    width: 120px;
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+/*新增功能2017/08/15*/
+.sheet_body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.sheet_header {
+    background: #28699A;
+}
+
+.sheet_table {
+    border-right: 1px solid #5C8BB4;
+    white-space: nowrap;
+    min-width: 100%;
+}
+
+.sheet_table th {
+    border-left: 1px solid #5C8BB4;
+    border-collapse: collapse;
+    text-overflow: ellipsis;
+    padding: 4px;
+    text-align: center;
+    position: relative;
+    /*text-align: left !important;*/
+    vertical-align: middle;
+}
+
+.sheet_table thead {
+    min-height: 25px;
+    background-color: #97b4cf;
+}
+
+.sheet_table tbody {
+    min-height: 25px;
+}
+
+.sheet_label {
+    text-align: center;
+    line-height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sheet_pre {
+    outline: none;
+    border: none;
+    background: white;
+}
+
+.sheet_table td {
+    border-left: 1px solid #5C8BB4;
+    /*border-collapse: collapse;*/
+    text-overflow: ellipsis;
+    padding: 4px;
+    text-align: left;
+    /*text-align: left !important;*/
+}
+
+.sheet_span {
+    /*margin-left: 40px;*/
+    margin-left: 30px;
+    margin-right: 20px;
+    margin-top: 7px;
+    /*float: left;*/
+}
+
+.sheet_span2 {
+    margin-left: 5px;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sheet_input {
+    float: left;
+    width: 15px;
+    height: 15px;
+}
+
+.sheet_input2 {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+}
+
+.sheet_name {
+    min-width: 50px;
+}
+
+.sheet_list {
+    float: left;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+    margin-right: 0;
+}
+
+
+/*新增功能2017/07/18*/
+.page-turningturning{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.page-turning {
+    font-size: 14px;
+    line-height: 16px;
+} 
+
+.page-turning span{
+    display: inline-block;
+}
+.page-turning .btn-first,
+.page-turning .btn-prev,
+.page-turning .btn-next,
+.page-turning .btn-last,
+.prev-mark,
+.next-mark
+{
+    margin-top: 10px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    margin-top: 2px;
+    vertical-align: -2px;
+}
+.page-turning .btn-first{
+    background-image:url(../images/gis_tool/first.png);
+}
+.page-turning .btn-prev{
+    background-image:url(../images/gis_tool/prev.png);
+}
+.page-turning .btn-next{
+    background-image:url(../images/gis_tool/next.png);
+}
+.page-turning .btn-last{
+    background-image:url(../images/gis_tool/last.png);
+}
+.prev-mark{
+    background-color:transparent !important;
+    background-image:url(../images/gis_tool/up.png);
+}
+.next-mark{
+    background-color:transparent !important;
+    background-image:url(../images/gis_tool/down.png);
+}
+i {
+    font-style: normal;
+    padding: 0 3px;
+    font-weight: bold;
+}
+
+
+/*y向翻页有关样式*/
+.prev-mark {
+    display: inline-block;
+}
+
+.next-mark {
+    display: inline-block;
+}
+
+
+/*viewing-screen列显示*/
+
+.viewing-screen {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.view-row,
+.view-column {
+    width: 65px;
+    background-color: #fff;
+    border: 0;
+    outline: none;
+    border: 1px solid #7ca2c3;
+    box-sizing: border-box;
+    text-align:center;
+}
+
+input::-ms-input-placeholder {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+input::-webkit-input-placeholder {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+
+/*详情提示表格样式*/
+
+._popover {
+    border-radius: 5px;
+    padding: 45px 10px 10px 10px;
+    width: 600px;
+    max-height: 400px;
+    resize: both;
+    overflow: auto;
+    position: absolute;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    z-index: 9999;
+    text-align: left;
+    -moz-box-shadow: -6px 4px 10px #333333, 4px -2px 5px #333333;
+    -webkit-box-shadow: -6px 4px 10px #333333, 4px -2px 5px #333333;
+    box-shadow: -6px 4px 10px #333333, 4px -2px 5px #333333;
+}
+
+@-webkit-keyframes shake {
+    0%,
+    100% {
+        -webkit-transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translateX(-3px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translateX(3px);
+    }
+}
+
+@-moz-keyframes shake {
+    0%,
+    100% {
+        -moz-transform: translateX(0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -moz-transform: translateX(-3px);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -moz-transform: translateX(3px);
+    }
+}
+
+.shake {
+    -webkit-animation-name: shake;
+    -webkit-animation-duration: 0.5s;
+    -moz--name: shake;
+    -moz-animation-duration: 0.5s;
+}
+
+._popover_close_wrap {
+    width: 600px;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    line-height: 40px;
+    height: 40px;
+    background: url(/app/resource/left_menu/left_menv_bg.png) repeat-x;
+}
+
+._popover_close {
+    display: block;
+    position: absolute;
+    right: 6px;
+    top: 12px;
+    width: 14px;
+    height: 14px;
+    margin-bottom: 30px;
+    background-image: url(/app/resource/workflow/close.png);
+}
+
+._popover_close:hover {
+    background-image: url(/app/resource/workflow/close_hover.png);
+}
+
+
+/*详细表格用到的样式*/
+
+.page_list_table {
+    width: 100%;
+    max-height: 96%;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    margin-top: 5px;
+    position: relative;
+}
+
+.page_list_table th {
+    border-left: 1px solid #5C8BB4;
+    border-collapse: collapse;
+    text-overflow: ellipsis;
+    padding: 4px;
+    text-align: center;
+    position: relative;
+    vertical-align: middle;
+    background-color: #97b4cf;
+}
+
+.page_list_table td {
+    border-left: 1px solid #5C8BB4;
+    text-overflow: ellipsis;
+    padding: 4px;
+    text-align: left;
+}
+
+.page_list_table table {
+    border-right: 1px solid #5C8BB4;
+    white-space: nowrap;
+    min-width: 100%;
+}
+
+.page_list_table .page_list_btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page_list_table .page_list_btn i {
+    font-style: normal;
+}
+
+.page_list_table .page_list_btn button {
+    outline: none;
+    padding: 2px 3px;
+}
+
+.page_list_table .jump {
+    width: 60px;
+}
+
+.page_list_table .sheet_input {
+    position: absolute;
+    left: 5px;
+}
+
+
+/* gis位置图 */
+
+.ol-popup {
+    position: absolute;
+    background-color: #eeeeee;
+    -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    bottom: 12px;
+    left: -50px;
+    min-width: 320px;
+}
+
+.ol-popup:after,
+.ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.ol-popup:after {
+    border-top-color: #eeeeee;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+
+.pophead {
+    width: 100%;
+    height: 30px;
+    background-color: #1188c0;
+    border-radius: 5px 5px 0 0;
+}
+
+.popup-title {
+    font: bold 15px sans-serif;
+    color: #fff;
+    text-align: left;
+    margin-left: 10px;
+    line-height: 30px;
+}
+
+.popup-content {
+    padding: 0px 20px 10px;
+}
+
+.ol-popup-closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    color: #fff !important;
+    font-size: 16px;
+}
+
+.ol-popup-closer:after {
+    content: "✖";
+}
+
+
+/*设置弹出框表格中th、td的样式*/
+
+div.ol-zoom {
+    z-index: 10000;
+}
+
+.popupTable th,
+.popupTable td {
+    font-size: 12px;
+    line-height: 20px;
+    color: #4D4D4D;
+    font-weight: normal;
+    text-align: left;
+    border: 0;
+}
+/* 色块样式 */
+.gradient {
+    position: absolute;
+    left: 10px;
+    top: 20%;
+    width: 20px;
+    height: 127px;
+    text-align: center;
+}
+
+.gradient div {
+    width: 100%;
+    height: 1px;
+}
+.gradient i {
+    font-style: normal;
+}
+/* 分类开关样式2 */
+.gis_classify{
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+.gis_classify_ch{
+    width: 20px;
+    height:10px;
+    margin: 4px 0;
+    line-height: 10px;
+    text-indent: 2em;
+    cursor: pointer;
+    color:#f00;
+}
+
+/* 20171211改成图标 */
+.gis_btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.gis_btn .TEST_RectBox,
+.gis_btn .TEST_Box,
+.gis_btn .resetTrak,
+.gis_btn .clear,
+.gis_btn .blowUp,
+.gis_btn .blowDown,
+.r_b_size .start-animation,
+.options-form .disHidPoint,
+.options-form .modify,
+.options-form .deleteTrk,
+.options-form .confirmTrk,
+.gis_btn .measuringDistance,
+.gis_btn .export-png
+{
+    background-color: transparent;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    margin: 0 5px;
+}
+/*../../../resource/asset/gis_tool/polygon.png */
+.gis_btn .TEST_RectBox {
+    background-image: url('../images/gis_tool/rect.svg');
+}
+.gis_btn .TEST_Box {
+    background-image: url('../images/gis_tool/polygon.svg');
+}
+.gis_btn .resetTrak{
+    background-image: url('../images/gis_tool/sport.svg');
+}
+.gis_btn .clear {
+    background-image: url('../images/gis_tool/clear.svg');
+}
+.gis_btn .measuringDistance {
+  background-image: url("../images/gis_tool/measuringDistance.svg");
+}
+.gis_btn .export-png {
+  background-image: url("../images/gis_tool/export-png.svg");
+}
+
+/**
+        * 提示框的样式信息
+        */
+
+.tooltipdis {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.tooltip-measure {
+  opacity: 1;
+  font-weight: bold;
+}
+
+.tooltip-static {
+  background-color: #ffffff;
+  color: black;
+  border: 1px solid white;
+}
+
+.tooltip-measure:before,
+.tooltip-static:before {
+  border-top: 6px solid rgba(0, 0, 0, 0.5);
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  margin-left: -7px;
+  left: 50%;
+}
+
+.tooltip-static:before {
+  border-top-color: #ffffff;
+}
+
+.css3Circle{
+    /*width: 40%;*/
+    /*height: 40%;*/
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 20%;
+    right: 0;
+    left: 0;
+    margin:auto;
+    border: 10px solid #007376;
+    background: radial-gradient(circle, #208280,#01585E);
+    text-align: center;
+    display:table;
+}
+.fontspan{
+    display:table-cell;
+    vertical-align:middle;
+    width:100%;
+    height:100%;
+    line-height: 100%;
+    font-size: 650%;
+    font-family: Fantasy;
+    color: white;
+}
+.healthScore{
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20%;
+    font-family: Serif;
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.options-form .disHidPoint{
+    background-image: url('../images/gis_tool/disHidPoint.svg');
+}
+.options-form .modify{
+    background-image: url('../images/gis_tool/modify.svg');
+}
+.options-form .deleteTrk{
+    background-image: url('../images/gis_tool/deleteTrk.svg');
+}
+.options-form .confirmTrk{
+    background-image: url('../images/gis_tool/confirmTrk.svg');
+}
+.gis_btn .blowUp {
+    background-image: url('../images/gis_tool/blow_up.svg');
+}
+
+.gis_btn .blowDown {
+    background-image: url('../images/gis_tool/blow_down.svg');
+}
+.r_b_size .start-animation{
+    background-image: url('../images/gis_tool/sport.svg');
+    vertical-align: top;
+    position: absolute;
+    right: 0;
+}
+.gis_btn .TEST_Box:active,
+.gis_btn .clear:active,
+.gis_btn .blowUp:active,
+.gis_btn .blowDown:active,
+.r_b_size .num-jian:active,
+.r_b_size .num-jia:active,
+.r_b_size .start-animation:active{
+    background-color: #00f;
+}
+
+.r_b_size {
+    position: absolute;
+    right: 0px;
+    top: 30px;
+}
+
+.r_b_size li {
+    list-style: none;
+}
+.r_b_size .number{
+    color: #13227a;
+}
+.r_b_size .btn-numbox{
+    margin-top: 10px;
+}
+.r_b_size .input-num {
+    width: 22px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    background-color:transparent;
+}
+.r_b_size li,.r_b_size ul{
+    display: inline-block;
+    text-align: center;
+}
+.r_b_size .num-jian,
+.r_b_size .num-jia{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    text-align: center;
+    line-height: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #13227a;
+}
+.gridster li{
+    background-color: transparent;
+}
+
+.tablebox {
+    height: 97%;
+    overflow: hidden;
+    position: absolute;
+    width: 96%;
+    margin: 1% 2%;
+    background-color:rgba(0,16,39,0.9);
+}
+
+.tbl-header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.tbl-body {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.tablebox table {
+    width: 100%;
+    border: none;
+}
+
+.tablebox table td {
+    font-size: 15px;
+    color: #0099FF;
+    line-height: 15px;
+    text-align: center;
+}
+
+.tablebox table th {
+    font-size: 16px;
+    color: #0099FF;
+    line-height: 16px;
+    text-align: center;
+}
+
+.tablebox table th {
+    font-weight: bold;
+}
+.tablebox table tr th {
+    background-color: #041A2F;
+    border: 2px solid rgba(0,16,39,0.9) !important;
+    cursor: pointer;
+}
+.tablebox .tbl-header table tr th {
+    background-color: #041A2F;
+    border: 2px solid rgba(0,16,39,0.9) !important;
+    cursor: pointer;
+}
+.tablebox table tr td {
+    background-color: #041A2F;
+    border: 2px solid rgba(0,16,39,0.9) !important;
+    background-color: transparent;
+}
+
+.tablebox table tr th {
+    background-color: #041A2F;
+    border: 2px solid rgba(0,16,39,0.9) !important;
+    background-color: transparent;
+}
+
+.tablebox .tbl-header table tr td {
+    background-color: #041A2F;
+    border: none !important;
+    background-color: transparent;
+}
+.tbl-body tr:nth-child(even) td,.tbl-body1 tr:nth-child(even) td {
+    background-color: #041A2F;
+}
+
+.tbl-body tr:nth-child(odd) td,.tbl-body1 tr:nth-child(odd) td {
+    background-color: #021426;
+}

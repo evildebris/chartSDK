@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/chart.css"/>
+    <link rel="stylesheet" type="text/css" href="libs/jquery/jquery-ui.min.css"/>
+    <style>
+        .page_title{
+            width: 100%;
+            height: 40px;
+            text-align: left;
+            color: white;
+            line-height: 40px;
+            padding-left: 50px;
+        }
+    </style>
+</head>
+<body >
+    <div class="page_title">
+        <div id="title_name" style="display: none"></div>
+    </div>
+    <div id="parentDom">
+    </div>
+   <!-- <div class="chart_bg" style="top:3%;left: 1%">
+        <div class="title"> 城市漫游图</div>
+        <div id="leftBox" style="width: 100%;height:300px"></div>
+    </div>
+    <div class="chart_bg" style="top:3%;right: 1%">
+        <div class="title">漫游条形图</div>
+        <div id="rightBox" style="width: 100%;height:300px"></div>
+    </div>
+    <div class="chart_bg" style="bottom:3%;left: 1%">
+        <div class="title">漫游面积图</div>
+        <div id="leftBox2" style="width: 100%;height:300px"></div>
+    </div>
+    <div class="chart_bg" style="bottom:3%;right: 1%">
+        <div class="title">服务器环形图</div>
+        <div id="rightBox2" style="width: 100%;height:300px"></div>
+    </div>-->
+</body>
+</html>
+<script src="config.js"></script>
+<script src="zzjzAppLib.js"></script>
+<script src="libs/jquery/jquery-1.11.0.js"></script>
+<script src="libs/jquery/jquery-ui.js"></script>
+<!--<script src="libs/echarts3/echartscurrent.min.js"></script>
+<script src="libs/echarts3/echarts-gl.min.js"></script>
+<script src="libs/echarts3/chinacurrent.js"></script>-->
+<script src="libs/echarts3/echartscurrent.min.js"></script>
+<script src="libs/echarts4/echarts4_20_0.js"></script>
+<script src="libs/echarts3/echarts_heatMap.js"></script>
+<script src="libs/echarts3/echarts3_8_4.min.js"></script>
+<script src="libs/echarts3/echarts-gl.min.js"></script>
+<script src="libs/echarts3/echarts3.js"></script>
+<script src="libs/echarts3/bmap.js"></script>
+<script src="libs/echarts3/world.js"></script>
+<script src="libs/echarts3/echarts3_6_2.js"></script>
+<script src="libs/echarts3/echarts-wordcloud.min.js"></script>
+<script src="libs/echarts3/chinacurrent.js"></script>
+<script src="libs/echarts3/worldcurrent.js"></script>
+<script src="libs/echarts3/dataTool.js"></script>
+<script src="libs/echarts3/echartscurrent-liquidfill.min.js"></script>
+<!-- 引入echarts主题 -->
+<script src="libs/echarts3/echarts-theme/dark.js"></script>
+<script src="libs/echarts3/echarts-theme/infographic.js"></script>
+<script src="libs/echarts3/echarts-theme/roma.js"></script>
+<script src="libs/echarts3/echarts-theme/shine.js"></script>
+<script src="libs/echarts3/echarts-theme/vintage.js"></script>
+<script src="libs/echarts3/echarts-theme/customed.js"></script>
+<script src="libs/echarts/build/source/echarts-all.js"></script>
+<script src="libs/openlayers/ol.js"></script>
+<script src="libs/openlayers/arc.js"></script>
+<script src="libs/openlayers/coord.js"></script>
+
+<script src="libs/echarts-x/echarts/echarts.js"></script>
+<script src="libs/echarts-x/echarts-x.js"></script>
+
+<script type="text/javascript">
+    var appId;
+    var serach = window.location.search.replace(/\//g,'');
+    var reg = /appId=(.*)/g
+    var parentDom = document.querySelector('#parentDom');
+    var pageNameDom = document.querySelector('#title_name');
+
+    if(window.location.search){
+        var regList = reg.exec(window.location.search);
+        if(regList && regList.length>1){
+            serach = serach.slice(1);
+            var argList = serach.split("&"),argMap={};
+            argList && argList.forEach(function (arg) {
+                arg = arg.split('=');
+                if(arg && arg.length>1){
+                    if(arg[0] === 'param'){
+                        try {
+                            arg[1] = decodeURIComponent(arg[1]);
+                            arg[1] = JSON.parse(arg[1]);
+                        }catch (e){
+                            console.log('解析param错误!');
+                        }
+                    }
+                    argMap[arg[0]] = arg[1];
+                }
+            });
+            zzjzAppLib.initApp(argMap.appId,parentDom).then(function (app) {
+                pageNameDom.textContent = app.name;
+                pageNameDom.style.display = 'block';
+                pageNameDom.setAttribute('title',app.name);
+            },function (error) {
+                alert(error.message);
+            });
+            zzjzAppLib.runApp(argMap.appId,argMap.param).then(function () {},function (error) {
+                alert(error.message);
+            })
+        }else {
+            alert("请输入appId！");
+        }
+    }else {
+        alert("请输入appId！");
+    }
+
+</script>
